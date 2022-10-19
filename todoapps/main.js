@@ -212,6 +212,15 @@ function undoTaskFromCompleted(todoId) {
 }
 
 
+document.addEventListener(SAVED_EVENT, function() {
+  let toast = document.getElementById("toast");
+
+  toast.className = "show";
+  setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 5000);
+  // console.log(localStorage.getItem(STORAGE_KEY));
+});
+
+
 document.addEventListener('DOMContentLoaded', function () {
   
   const submitForm = document.getElementById('form');
@@ -224,15 +233,6 @@ document.addEventListener('DOMContentLoaded', function () {
   if (isStorageExist()) {
     loadDataFromStorage();
   }
-});
-
-
-document.addEventListener(SAVED_EVENT, function() {
-  let toast = document.getElementById("toast");
-
-  toast.className = "show";
-  setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 5000);
-  // console.log(localStorage.getItem(STORAGE_KEY));
 });
 
 
